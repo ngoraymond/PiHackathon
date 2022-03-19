@@ -1,3 +1,4 @@
+from typing import ItemsView
 import torch
 import sys
 import os
@@ -34,6 +35,14 @@ if __name__ == '__main__':
             if item not in cur_seen:
                 cur_seen[item] = 0
             cur_seen[item] = cur_seen[item] + 1
+
+        for item in items_tracked.keys():
+            if item not in cur_seen:
+                print(f'{item} has left the camera view')
+            elif items_tracked[item] > cur_seen[item]: #item has left the camera view
+                print(f'{items_tracked[item] - cur_seen[item]} instances of {item} has left the camera view')
+            
+        items_tracked = cur_seen
 
         
 
