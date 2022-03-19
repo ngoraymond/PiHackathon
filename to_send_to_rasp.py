@@ -9,7 +9,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 
 
 if __name__ == '__main__':
-    model = torch.hub.load('ultralytics/yolov5', 'yolov5m')  
+    model = torch.hub.load('ultralytics/yolov5', 'yolov5m')  #one second for small, 3 seconds for medium?
     webcam = cv2.VideoCapture(0)
     items_tracked = {}
 
@@ -22,8 +22,6 @@ if __name__ == '__main__':
             continue
 
         results = model(frame)
-
-        results.print()
 
         pds = results.pandas().xyxy[0]
 
