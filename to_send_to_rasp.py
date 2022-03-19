@@ -23,6 +23,8 @@ if __name__ == '__main__':
 
         results = model(frame)
 
+        results.print()
+
         pds = results.pandas().xyxy[0]
 
         #only get high confident estimate
